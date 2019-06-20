@@ -14,12 +14,19 @@
         <form action="/shows/{{show_info.id}}/update" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                        </ul>
+                    {% endif %}
                     <label for="">Title</label>
-                    <input type="text" name="u_title" class="form-control" value="{{show_info.title}}">
+                    <input type="text" name="title" class="form-control" value="{{show_info.title}}">
                     <label for="">Network</label>
-                    <input type="text" name="u_network" class="form-control" value={{show_info.network}}>
+                    <input type="text" name="network" class="form-control" value={{show_info.network}}>
                     <label for="">Release Date</label>
-                    <input type="date" name="u_release_date" class="form-control" value="{{show_info.released_date}}" >
+                    <input type="date" name="release_date" class="form-control" value="{{show_info.released_date}}" >
                     <label for=>Description</label>
                     <textarea class="form-control" name="u_description" rows="4">{{show_info.description}}</textarea>
                     <button class="btn btn-primary">Update</button>

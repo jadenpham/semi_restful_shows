@@ -20,7 +20,14 @@
         <div class="header">
             <h1>Add a New Show</h1>
             <a href="/">Home</a>
-        </div>    
+        </div>
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}   
         <form action="/create" method="POST">
             <div class="form-group">
                 {% csrf_token %}
