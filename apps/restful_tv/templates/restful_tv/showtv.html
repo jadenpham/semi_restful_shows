@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Show Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    .divider{
+        height: 200px;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="body">
+            <h1>TV Show ID: {{show_info.id}}</h1>
+            <a href="/">Home</a>
+            <hr>
+            <h4>Title: {{show_info.title}}</h4>
+            <hr>
+            <h4>Network: {{show_info.network}}</h4>
+            <hr>
+            <h4>Release Date: {{show_info.released_date}}</h4>
+            <hr>
+            <h4>Description: {{show_info.description}}</h4>
+            <hr>
+        </div>    
+        <div class="divider">
+    
+        </div>
+        <div class="footer">
+            <h4>Last Updated On: {{show_info.updated_at}}</h4>
+            <a href="/shows/{{show_info.id}}/edit">Edit</a>
+            <form action="/shows/{{show_info.id}}/delete">
+                {% csrf_token %}
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
